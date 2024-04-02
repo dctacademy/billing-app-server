@@ -44,7 +44,7 @@ invoicesCltr.create = async (req, res) => {
 
 invoicesCltr.list = async (req, res) => {
     try {
-        const invoices = await Invoice.find()
+        const invoices = await Invoice.find().populate('customer', ['_id', 'name']).populate('lineItems.product', ['_id','name'])
         res.json(invoices)
     } catch(err) {
         res.status(500).json({ error: 'something went wrong'})

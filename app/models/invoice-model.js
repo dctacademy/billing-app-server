@@ -1,10 +1,16 @@
 const mongoose = require('mongoose')
 const { Schema, model } = mongoose 
 const invoiceSchema = new Schema({
-    customer: Schema.Types.ObjectId,
+    customer: {
+        type: Schema.Types.ObjectId,
+        ref: 'Customer'
+    },
     lineItems:[
         { 
-            product: Schema.Types.ObjectId,
+            product: {
+                type: Schema.Types.ObjectId, 
+                ref: 'Product'
+            },
             price: Number,
             quantity: Number 
         }

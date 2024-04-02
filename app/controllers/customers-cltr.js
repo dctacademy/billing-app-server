@@ -50,4 +50,14 @@ customersCltr.remove = async (req, res) => {
     }
 }
 
+customersCltr.show = async (req, res) => {
+    const id = req.params.id 
+    try {
+        const customer = await Customer.findById(id).populate('purchaseHistory.invoice')
+        res.json(customer) 
+    } catch(err) {
+
+    }
+}
+
 module.exports = customersCltr 

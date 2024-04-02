@@ -25,6 +25,7 @@ app.delete('/api/products/:id', productsCltr.remove)
 
 app.post('/api/customers', checkSchema(customerValidationSchema), customersCltr.create)
 app.get('/api/customers', customersCltr.list)
+app.get('/api/customers/:id', customersCltr.show)
 app.put('/api/customers/:id', checkSchema(customerValidationSchema), customersCltr.update)
 app.delete('/api/customers/:id', customersCltr.remove)
 
