@@ -35,7 +35,8 @@ invoicesCltr.create = async (req, res) => {
         customer.outstandingBalance += invoice.netTotal 
         customer.purchaseHistory.push({ invoice: invoice._id })
         await customer.save()  // isNew
-
+        
+        
         res.status(201).json(invoice)
     } catch(err) {
         res.status(500).json({ error: 'something went wrong'})
